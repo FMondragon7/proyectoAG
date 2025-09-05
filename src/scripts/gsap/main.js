@@ -1,9 +1,10 @@
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 // ===============================
 // BIRTHDAY WEBSITE - MAIN JAVASCRIPT
 // ===============================
-
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
 
 // ===============================
 // CONFIGURACIÓN GLOBAL
@@ -941,7 +942,7 @@ function cleanupStuckHearts() {
 // ===============================
 // INICIALIZACIÓN PRINCIPAL
 // ===============================
-function initApp() {
+export function initApp() {
     createStarryBackground();
     cleanupStuckHearts();
     
@@ -956,9 +957,4 @@ function initApp() {
     initFinalAnimations();
     initFloatingHearts();
     initPhotoInteractions();
-}
-
-// Inicializar cuando el DOM esté listo (solo si no hay pantalla de bienvenida)
-if (!document.getElementById('welcomeScreen')) {
-    document.addEventListener('DOMContentLoaded', initApp);
 }

@@ -1,0 +1,28 @@
+---
+import "@/assets/styles/global.css";
+const { title = "Feliz Cumpleaños!", description = "" } = Astro.props;
+---
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{description && <meta name="description" content={description} />}
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+	</head>
+
+	<body class="min-h-[1000vh] m-6 flex flex-col items-center font-montserrat text-white overflow-x-hidden relative">
+		<slot />
+	</body>
+
+	<!-- Bootstrap del JS cliente -->
+	<script src="/src/scripts/bootstrap.js"></script>
+
+	<script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
+</html>
