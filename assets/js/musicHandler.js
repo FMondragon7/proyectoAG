@@ -44,9 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.removeEventListener('click', handleFirstInteraction);
             document.removeEventListener('keydown', handleFirstInteraction);
             document.removeEventListener('touchstart', handleFirstInteraction);
+            document.removeEventListener('scroll', handleFirstInteraction, { once: true });
         }
         
         // Agregar listeners para detectar primera interacción
+        document.addEventListener('scroll', handleFirstInteraction, { once: true });
         document.addEventListener('click', handleFirstInteraction);
         document.addEventListener('keydown', handleFirstInteraction);
         document.addEventListener('touchstart', handleFirstInteraction); // Para móviles
