@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pauseIcon = document.getElementById('pauseIcon');
     
     let isPlaying = false;
+    let firstInteractionHandled = false;
     
     // Configurar volumen inicial
     music.volume = 0.3; // Volumen al 30% para que no sea muy fuerte
@@ -30,28 +31,51 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Configurar trigger para primera interacción si el autoplay falla
     function setupFirstInteractionTrigger() {
-        function handleFirstInteraction() {
+        function handleFirstInteraction(event) {
+            // Evitar múltiples ejecuciones
+            if (firstInteractionHandled) return;
+            firstInteractionHandled = true;
+            
+            console.log('Primera interacción detectada:', event.type);
+            
             music.muted = false;
             music.play().then(() => {
                 isPlaying = true;
                 playIcon.classList.add('hidden');
                 pauseIcon.classList.remove('hidden');
+                console.log('Música iniciada por interacción del usuario');
             }).catch(e => {
                 console.log('Error al reproducir música:', e);
             });
             
-            // Remover listeners después de la primera interacción
+            // Remover todos los listeners después de la primera interacción
+            removeAllInteractionListeners();
+        }
+        
+        // Función específica para manejar el scroll
+        function handleScrollInteraction() {
+            if (firstInteractionHandled) return;
+            console.log('Scroll detectado - iniciando música');
+            handleFirstInteraction({ type: 'scroll' });
+        }
+        
+        // Función para remover todos los listeners
+        function removeAllInteractionListeners() {
             document.removeEventListener('click', handleFirstInteraction);
             document.removeEventListener('keydown', handleFirstInteraction);
             document.removeEventListener('touchstart', handleFirstInteraction);
-            document.removeEventListener('scroll', handleFirstInteraction, { once: true });
+            document.removeEventListener('scroll', handleScrollInteraction);
+            window.removeEventListener('scroll', handleScrollInteraction);
         }
         
         // Agregar listeners para detectar primera interacción
-        document.addEventListener('scroll', handleFirstInteraction, { once: true });
+        document.addEventListener('scroll', handleScrollInteraction, { passive: true });
+        window.addEventListener('scroll', handleScrollInteraction, { passive: true });
         document.addEventListener('click', handleFirstInteraction);
         document.addEventListener('keydown', handleFirstInteraction);
-        document.addEventListener('touchstart', handleFirstInteraction); // Para móviles
+        document.addEventListener('touchstart', handleFirstInteraction, { passive: true }); // Para móviles
+        
+        console.log('Listeners de interacción configurados. Esperando primera interacción...');
     }
     
     // Intentar iniciar música inmediatamente al cargar
@@ -101,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Manejar errores de carga
     music.addEventListener('error', function(e) {
         console.error('Error al cargar el archivo de audio:', e);
+        console.error('Código de error:', music.error?.code);
+        console.error('Mensaje de error:', music.error?.message);
         // Ocultar el control si hay error
         const musicControl = document.querySelector('.fixed.top-4.right-4');
         if (musicControl) {
@@ -112,4 +138,5 @@ document.addEventListener('DOMContentLoaded', function() {
     music.addEventListener('loadstart', () => console.log('Comenzando a cargar música...'));
     music.addEventListener('canplay', () => console.log('Música lista para reproducir'));
     music.addEventListener('loadeddata', () => console.log('Datos de música cargados'));
+    music.addEventListener('canplaythrough', () => console.log('Música completamente cargada y lista'));
 });
