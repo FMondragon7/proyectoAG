@@ -78,6 +78,29 @@
         <div class="sparkle" style="left: 95%; top: 25%; animation-delay: 2.5s;"></div>
     </div>
     
+    <!-- PANTALLA DE BIENVENIDA -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="welcome-hearts">
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💖</div>
+                <div class="floating-heart">💗</div>
+                <div class="floating-heart">💝</div>
+                <div class="floating-heart">💘</div>
+                <div class="floating-heart">💞</div>
+            </div>
+            <h1 class="welcome-title">Feliz Cumpleaños</h1>
+            <p class="welcome-subtitle">Una sorpresa especial te espera</p>
+            <button id="startButton" class="start-button">
+                <span class="button-text">Pulsa para empezar</span>
+                <div class="button-glow"></div>
+            </button>
+        </div>
+    </div>
+    
+    <!-- CONTENIDO PRINCIPAL (inicialmente oculto) -->
+    <div id="mainContent" class="main-content hidden">
+    
     <main class="w-full flex flex-col items-center relative z-10">
         <!-- HERO -->
         <section class="w-full flex flex-col items-center justify-center min-h-[100vh] relative overflow-visible pt-32 pb-24">
@@ -174,7 +197,10 @@
         </section>
     </main>
     
+    </div> <!-- Cierre del contenido principal -->
+    
     <!-- Custom JavaScript -->
+    <script src="assets/js/welcome.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/musicHandler.js"></script>
 </body>

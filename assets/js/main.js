@@ -958,5 +958,7 @@ function initApp() {
     initPhotoInteractions();
 }
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', initApp);
+// Inicializar cuando el DOM esté listo (solo si no hay pantalla de bienvenida)
+if (!document.getElementById('welcomeScreen')) {
+    document.addEventListener('DOMContentLoaded', initApp);
+}
