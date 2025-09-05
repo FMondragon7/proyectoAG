@@ -3,6 +3,14 @@
 // ===============================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Asegurar que el scroll esté al inicio inmediatamente
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Deshabilitar scroll durante la pantalla de bienvenida
+    document.body.style.overflow = 'hidden';
+    
     // Verificar si existe la pantalla de bienvenida
     const welcomeScreen = document.getElementById('welcomeScreen');
     const mainContent = document.getElementById('mainContent');
@@ -123,6 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Transición completada - mostrando contenido principal');
                 welcomeScreen.style.display = 'none';
                 mainContent.classList.remove('hidden');
+                
+                // Rehabilitar el scroll para el contenido principal
+                document.body.style.overflow = '';
+                
+                // Asegurar que el scroll esté al inicio antes de mostrar el contenido
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
                 
                 // Inicializar el contenido principal
                 if (typeof initApp === 'function') {

@@ -31,6 +31,19 @@
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Script para asegurar que el scroll esté al inicio -->
+    <script>
+        // Asegurar scroll al inicio inmediatamente
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        
+        // También prevenir scroll durante la carga
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+    </script>
 </head>
 <body class="min-h-[1000vh] m-6 flex flex-col items-center font-montserrat text-white overflow-x-hidden relative">
     <!-- Música de fondo -->
@@ -236,5 +249,33 @@
     <script src="assets/js/welcome.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/musicHandler.js"></script>
+    
+    <!-- Script adicional para garantizar scroll al inicio -->
+    <script>
+        // Ejecutar cuando la página esté completamente cargada
+        window.addEventListener('load', function() {
+            // Forzar scroll al inicio con múltiples métodos
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+                
+                // También resetear en caso de que haya history state
+                if (history.scrollRestoration) {
+                    history.scrollRestoration = 'manual';
+                }
+            }, 0);
+        });
+        
+        // Asegurar que al hacer refresh también vaya al inicio
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        // Prevenir scroll automático del navegador
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
+    </script>
 </body>
 </html>
