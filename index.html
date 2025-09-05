@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños!</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ["Montserrat", "Arial", "sans-serif"],
+                    },
+                    colors: {
+                        primary: '#e57373',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="min-h-[1000vh] m-6 flex flex-col items-center font-montserrat text-white overflow-x-hidden relative">
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" loop autoplay preload="auto">
+        <source src="assets/mp3/Alex Warren - Ordinary (Lyrics).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <!-- Control de música personalizado -->
+    <div class="fixed top-4 right-4 z-50 flex items-center gap-3 bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+        <button id="musicToggle" class="text-white hover:text-pink-300 transition-colors duration-300">
+            <svg id="playIcon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIcon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+        <span class="text-white/80 text-sm">♪ Ordinary</span>
+    </div>
+    
+    <!-- Fondo estrellado dinámico -->
+    <div class="starry-night" id="starryBackground"></div>
+    
+    <!-- Cursor personalizado -->
+    <div class="love-cursor"></div>
+    
+    <!-- Partículas flotantes de corazones -->
+    <div class="floating-hearts">
+        <div class="heart" style="left: 10%; top: 20%; animation-delay: 0s;">💕</div>
+        <div class="heart" style="left: 80%; top: 30%; animation-delay: 1s;">💖</div>
+        <div class="heart" style="left: 60%; top: 60%; animation-delay: 2s;">💗</div>
+        <div class="heart" style="left: 20%; top: 80%; animation-delay: 3s;">💝</div>
+        <div class="heart" style="left: 90%; top: 70%; animation-delay: 4s;">💘</div>
+        <div class="heart" style="left: 40%; top: 15%; animation-delay: 5s;">💞</div>
+    </div>
+    
+    <!-- Estrellas brillantes -->
+    <div class="fixed inset-0 pointer-events-none z-1">
+        <div class="sparkle" style="left: 15%; top: 25%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="left: 85%; top: 45%; animation-delay: 1.2s;"></div>
+        <div class="sparkle" style="left: 25%; top: 65%; animation-delay: 2.1s;"></div>
+        <div class="sparkle" style="left: 75%; top: 85%; animation-delay: 0.8s;"></div>
+        <div class="sparkle" style="left: 50%; top: 10%; animation-delay: 1.8s;"></div>
+        <div class="sparkle" style="left: 95%; top: 25%; animation-delay: 2.5s;"></div>
+    </div>
+    
+    <main class="w-full flex flex-col items-center relative z-10">
+        <!-- HERO -->
+        <section class="w-full flex flex-col items-center justify-center min-h-[100vh] relative overflow-visible pt-32 pb-24">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-shimmer mb-6 text-center drop-shadow-lg tracking-tight hero-title text-reveal">Feliz Cumpleaños 30, mi amor!</h1>
+            <p class="text-2xl text-blue-100 mb-12 text-center hero-sub parallax-element">
+                Hoy es un día muy especial.<br>
+                Gracias por ser mi compañera, mi amiga, el amor de mi vida y la madre de nuestros hijos.
+            </p>
+            <img src="assets/images/image3.avif" alt="Hero" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 w-[600px] h-[600px] object-cover pointer-events-none select-none blur-sm parallax-element" />
+        </section>
+
+        <!-- FOTOS Y MENSAJES FLUIDOS -->
+        <div class="w-full flex flex-col items-center relative">
+            <!-- Foto 1 - desde la izquierda -->
+            <div class="w-full flex items-center justify-start min-h-[80vh] relative mobile-stack">
+                <img src="assets/images/image1.avif" alt="Foto 1" class="photo-fade-left photo-glow parallax-element absolute left-0 md:left-16 top-1/2 -translate-y-1/2 w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-10" />
+                <div class="ml-[22rem] md:ml-[28rem] max-w-xl parallax-element text-content flex flex-col justify-center min-h-[20rem]">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-200 mb-4 section-title-1 text-reveal">
+                        Un momento especial
+                    </h2>
+                    <p class="text-base md:text-lg text-blue-100 section-text-1">
+                        Esta foto me recuerda lo feliz que soy a tu lado y todos los momentos hermosos que hemos compartido.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Foto 2 - desde la derecha -->
+            <div class="w-full flex items-center justify-end min-h-[80vh] relative mobile-stack">
+                <img src="assets/images/image2.avif" alt="Foto 2" class="photo-fade-right photo-glow parallax-element absolute right-0 md:right-16 top-1/2 -translate-y-1/2 w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-10" />
+                <div class="mr-[22rem] md:mr-[28rem] max-w-xl text-right parallax-element text-content flex flex-col justify-center min-h-[20rem]">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-200 mb-4 section-title-2 text-reveal">Siempre juntos</h2>
+                    <p class="text-base md:text-lg text-blue-100 section-text-2">Gracias por estar siempre a mi lado, apoyarme y hacerme sentir amado cada día.</p>
+                </div>
+            </div>
+            
+            <!-- Foto 3 - desde abajo (fade up) -->
+            <div class="w-full flex flex-col items-center justify-center min-h-[80vh] relative px-4">
+                <img src="assets/images/image3.avif" alt="Foto 3" class="photo-fade-up photo-glow parallax-element w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-10" />
+                <div class="mt-8 max-w-xl text-center parallax-element px-4">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-200 mb-4 section-title-3 text-reveal">Nuestro viaje juntos</h2>
+                    <p class="text-base md:text-lg text-blue-100 section-text-3">Cada día contigo es una nueva aventura. Gracias por llenar mi vida de alegría y amor.</p>
+                </div>
+            </div>
+            
+            <!-- Foto 4 - desde la izquierda -->
+            <div class="w-full flex items-center justify-start min-h-[80vh] relative mobile-stack">
+                <img src="assets/images/image4.avif" alt="Foto 4" class="photo-fade-left photo-glow parallax-element absolute left-0 md:left-16 top-1/2 -translate-y-1/2 w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-10" />
+                <div class="ml-[22rem] md:ml-[28rem] max-w-xl parallax-element text-content flex flex-col justify-center min-h-[20rem]">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-200 mb-4 section-title-4 text-reveal">Momentos únicos</h2>
+                    <p class="text-base md:text-lg text-blue-100 section-text-4">Cada segundo contigo se convierte en un recuerdo que atesoro para siempre.</p>
+                </div>
+            </div>
+            
+            <!-- Foto 5 - desde la derecha -->
+            <div class="w-full flex items-center justify-end min-h-[80vh] relative mobile-stack">
+                <img src="assets/images/image5.avif" alt="Foto 5" class="photo-fade-right photo-glow parallax-element absolute right-0 md:right-16 top-1/2 -translate-y-1/2 w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-10" />
+                <div class="mr-[22rem] md:mr-[28rem] max-w-xl text-right parallax-element text-content flex flex-col justify-center min-h-[20rem]">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-200 mb-4 section-title-5 text-reveal">Tu sonrisa</h2>
+                    <p class="text-base md:text-lg text-blue-100 section-text-5">Tu sonrisa ilumina mi mundo y hace que cada día valga la pena.</p>
+                </div>
+            </div>
+            
+            <!-- Foto 6 - desde abajo (fade up) -->
+            <div class="w-full flex flex-col items-center justify-center min-h-[80vh] relative px-4">
+                <img src="assets/images/image6.avif" alt="Foto 6" class="photo-fade-up photo-glow parallax-element w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-10" />
+                <div class="mt-8 max-w-xl text-center parallax-element px-4">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-200 mb-4 section-title-6 text-reveal">Amor infinito</h2>
+                    <p class="text-base md:text-lg text-blue-100 section-text-6">Mi amor por ti crece cada día más, sin límites ni fronteras.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRASE DESTACADA -->
+        <section class="w-full flex flex-col items-center justify-center min-h-[60vh] relative px-4">
+            <blockquote class="text-3xl md:text-4xl lg:text-5xl font-bold text-shimmer text-center mb-8 section-quote morphing-text">"Eres mi persona favorita en el mundo."</blockquote>
+            <p class="text-base md:text-lg text-blue-100 text-center section-quote-sub parallax-element px-4">No importa lo que pase, siempre estaré a tu lado.</p>
+        </section>
+
+        <!-- PARALLAX FOTO -->
+        <section class="w-full flex flex-col items-center justify-center min-h-[120vh] md:min-h-[140vh] relative overflow-hidden px-4" id="parallax-section">
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0" id="parallax-container">
+                <img src="assets/images/image7.avif" alt="Parallax" class="parallax-img photo-glow w-80 h-80 md:w-96 md:h-96 object-cover rounded-3xl opacity-0" id="zoom-image" />
+            </div>
+            <div class="relative z-10 flex flex-col items-center parallax-element px-4 mt-8 md:mt-12">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-200 mb-4 md:mb-6 section-title-7 text-reveal text-center">Nuestro destino</h2>
+                <p class="text-base md:text-lg lg:text-xl text-blue-100 text-center max-w-xl section-text-7">El futuro es brillante porque lo comparto contigo.</p>
+            </div>
+        </section>
+
+        <!-- MENSAJE FINAL -->
+        <section class="w-full flex flex-col items-center justify-center min-h-[100vh] px-4">
+            <p class="text-2xl md:text-3xl text-shimmer text-center font-bold mb-6 section-final text-reveal">¡Te amo con todo mi corazón!</p>
+            <p class="text-base md:text-lg text-blue-100 text-center section-final-sub parallax-element px-4 max-w-2xl">Espero que este regalo te haga sonreír y te recuerde lo importante que eres para mí.</p>
+        </section>
+    </main>
+    
+    <!-- Custom JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/musicHandler.js"></script>
+</body>
+</html>
