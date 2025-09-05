@@ -369,11 +369,6 @@
         width: 300px !important;
         height: 300px !important;
     }
-    
-    /* Reducir efectos parallax en móviles */
-    .parallax-element {
-        transform: none !important;
-    }
 }
 
 @media (max-width: 480px) {
