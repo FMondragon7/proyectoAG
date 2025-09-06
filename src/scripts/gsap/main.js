@@ -183,12 +183,13 @@ function initPhotoAnimations() {
         { selector: 'img[alt="Foto 2"]', type: 'right' },
         { selector: 'img[alt="Foto 3"]', type: 'up' },
         { selector: 'img[alt="Foto 4"]', type: 'left' },
-        { selector: 'img[alt="Foto 4.2"]', type: 'left', to: { x: -200, y: 180 } },
-        { selector: 'img[alt="Foto 4.3"]', type: 'left', to: { x: -150, y: -140 } },
+        { selector: 'img[alt="Foto 4.2"]', type: 'left', to: { x: -200, y: 230 } },
+        { selector: 'img[alt="Foto 4.3"]', type: 'left', to: { x: -220, y: -80 } },
         { selector: 'img[alt="Foto 5"]', type: 'right' },
         { selector: 'img[alt="Foto 5.2"]', type: 'right', to: { x: 200, y: -180 } },
         { selector: 'img[alt="Foto 5.3"]', type: 'right', to: { x: 220, y: 130 } },
-        { selector: 'img[alt="Foto 6"]', type: 'up' }
+        { selector: 'img[alt="Foto 6"]', type: 'up' },
+        { selector: 'img[alt="Foto Final"]', type: 'up' }
     ];
 
     photoAnimations.forEach((photo, index) => {

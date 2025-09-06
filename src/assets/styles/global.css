@@ -283,6 +283,11 @@
     transform: scale(1.05);
 }
 
+/* Ajuste específico para la imagen de aleYnena */
+.aleynena-adjust {
+    object-position: center 26% !important; /* Mueve la imagen hacia abajo para mostrar mejor la cara */
+}
+
 .parallax-element {
     will-change: transform;
 }
@@ -451,12 +456,12 @@
 
 .element-loaded.image4-2 {
     opacity: 1 !important;
-    transform: translate(-200px, 180px) scale(1) !important;
+    transform: translate(-200px, 230px) scale(1) !important;
 }
 
 .element-loaded.image4-3 {
     opacity: 1 !important;
-    transform: translate(-150px, -140px) scale(1) !important;
+    transform: translate(-220px, -80px) scale(1) !important;
 }
 
 .element-loaded.image5-2 {
