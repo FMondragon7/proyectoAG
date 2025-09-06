@@ -183,7 +183,11 @@ function initPhotoAnimations() {
         { selector: 'img[alt="Foto 2"]', type: 'right' },
         { selector: 'img[alt="Foto 3"]', type: 'up' },
         { selector: 'img[alt="Foto 4"]', type: 'left' },
+        { selector: 'img[alt="Foto 4.2"]', type: 'left', to: { x: -200, y: 180 } },
+        { selector: 'img[alt="Foto 4.3"]', type: 'left', to: { x: -150, y: -140 } },
         { selector: 'img[alt="Foto 5"]', type: 'right' },
+        { selector: 'img[alt="Foto 5.2"]', type: 'right', to: { x: 200, y: -180 } },
+        { selector: 'img[alt="Foto 5.3"]', type: 'right', to: { x: 220, y: 130 } },
         { selector: 'img[alt="Foto 6"]', type: 'up' }
     ];
 
@@ -192,7 +196,8 @@ function initPhotoAnimations() {
         if (!element) return; // Si el elemento no existe, saltar
         
         let fromProps = {};
-        
+        let toProps = photo.to || {};
+
         // Configurar animación según el tipo
         switch(photo.type) {
             case 'left':
@@ -249,7 +254,8 @@ function initPhotoAnimations() {
             opacity: 1,
             filter: 'blur(0px)',
             duration: photo.type === 'up' ? 0.8 : 1.2,
-            ease: 'power3.out'
+            ease: 'power3.out',
+            ...toProps
         });
 
         // Efecto de magnetismo individual

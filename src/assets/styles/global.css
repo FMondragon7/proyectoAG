@@ -449,6 +449,26 @@
     transform: translateY(0) scale(1) !important;
 }
 
+.element-loaded.image4-2 {
+    opacity: 1 !important;
+    transform: translate(-200px, 180px) scale(1) !important;
+}
+
+.element-loaded.image4-3 {
+    opacity: 1 !important;
+    transform: translate(-150px, -140px) scale(1) !important;
+}
+
+.element-loaded.image5-2 {
+    opacity: 1 !important;
+    transform: translate(200px, -180px) scale(1) !important;
+}
+
+.element-loaded.image5-3 {
+    opacity: 1 !important;
+    transform: translate(220px, 130px) scale(1) !important;
+}
+
 /* Optimizaciones móviles */
 @media (max-width: 768px) {
     .starry-night {
@@ -499,7 +519,56 @@
         transform: none !important;
         margin: 0 auto 2rem auto !important;
     }
-    
+
+    .element-loaded.image4-2 {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .element-loaded.image4-3 {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .element-loaded.image5-2 {
+        opacity: 1 !important;
+        transform: none!important;
+    }
+
+    .element-loaded.image5-3 {
+        opacity: 1 !important;
+        transform: none!important;
+    }
+
+    .image-group {
+        position: relative;
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .image-group .stackImg {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .image-group .stackImg.image4-2,
+    .image-group .stackImg.image5-2 {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(30%, -45%) rotate(5deg) !important;
+    }
+
+    .image-group .stackImg.image4-3,
+    .image-group .stackImg.image5-3 {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-130%, -45%) rotate(-5deg) !important;
+    }
+
     .mobile-stack .text-content {
         margin: 0 !important;
         max-width: 100% !important;
