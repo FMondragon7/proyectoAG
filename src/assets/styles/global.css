@@ -288,6 +288,10 @@
     object-position: center 26% !important; /* Mueve la imagen hacia abajo para mostrar mejor la cara */
 }
 
+.amigas-adjust {
+    object-position: center 30% !important; /* Mueve la imagen hacia abajo para mostrar mejor las caras */
+}
+
 .parallax-element {
     will-change: transform;
 }
