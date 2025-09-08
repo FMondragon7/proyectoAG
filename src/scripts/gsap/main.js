@@ -151,31 +151,6 @@ function initHeroAnimations() {
     }, 800); // Aparece después del título
 }
 
-// ===============================
-// FOTOS CON EFECTOS OPTIMIZADOS
-// ===============================
-function quickPhotoAnimation(selector, fromProps) {
-    gsap.to(selector, {
-        scrollTrigger: {
-            trigger: selector,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-            onEnter: () => {
-                document.querySelector(selector)?.classList.add('element-loaded');
-                if (!isMobileDevice) createSparkles(selector);
-            }
-        },
-        opacity: 1,
-        x: 0,
-        y: 0,
-        scale: 1,
-        rotation: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        from: fromProps
-    });
-}
-
 function initPhotoAnimations() {
     // Array de todas las imágenes con sus tipos de animación específicos
     const photoAnimations = [
@@ -298,24 +273,6 @@ function quickRevealText(element) {
         y: 20,
         opacity: 0,
         ease: 'power2.out'
-    });
-}
-
-function quickTextAnimation(selector, delay = 0) {
-    gsap.utils.toArray(selector).forEach((el, idx) => {
-        gsap.from(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 92%',
-                toggleActions: 'play none none reverse',
-                onEnter: () => el.classList.add('element-loaded')
-            },
-            x: idx % 2 === 0 ? -40 : 40,
-            opacity: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            delay: delay
-        });
     });
 }
 
