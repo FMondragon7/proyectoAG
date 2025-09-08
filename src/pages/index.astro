@@ -25,12 +25,17 @@ import amigas4 from "@/assets/images/amigas4.avif";
 
 const mp3Src = "/Alex Warren - Ordinary (Lyrics).mp3";
 
-// Selección aleatoria de imágenes
-const amigasImages = [amigas3, amigas4];
-const aleYkaroImages = [aleYkaro1, aleYkaro2, aleYkaro3];
+// Importar todas las imágenes para usar en el cliente
+const amigasImages = {
+    amigas3: amigas3.src,
+    amigas4: amigas4.src
+};
 
-const randomAmigasImage = amigasImages[Math.floor(Math.random() * amigasImages.length)];
-const randomAleYkaroImage = aleYkaroImages[Math.floor(Math.random() * aleYkaroImages.length)];
+const aleYkaroImages = {
+    aleYkaro1: aleYkaro1.src,
+    aleYkaro2: aleYkaro2.src,
+    aleYkaro3: aleYkaro3.src
+};
 ---
 
 <Layout>
@@ -130,8 +135,8 @@ const randomAleYkaroImage = aleYkaroImages[Math.floor(Math.random() * aleYkaroIm
             <!-- Foto 5 - desde la derecha -->
             <div class="w-full flex items-center justify-end min-h-[80vh] relative mobile-stack">
 				<div class="image-group">
-					<AstroImage src={randomAmigasImage} alt="Foto 5" class="photo-fade-right photo-glow parallax-element absolute right-0 md:right-16 top-1/2 -translate-y-1/2 w-80 h-80 rounded-2xl shadow-2xl opacity-0 scale-60 z-10 stackImg amigas-adjust" />
-					<AstroImage src={randomAleYkaroImage} alt="Foto 5.2" class="photo-fade-right photo-glow parallax-element absolute right-0 md:right-16 top-1/2 -translate-y-1/2 w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-11 image5-2 stackImg" />
+					<AstroImage src={amigas3} alt="Foto 5" id="random-amigas-img" class="photo-fade-right photo-glow parallax-element absolute right-0 md:right-16 top-1/2 -translate-y-1/2 w-80 h-80 rounded-2xl shadow-2xl opacity-0 scale-60 z-10 stackImg amigas-adjust" />
+					<AstroImage src={aleYkaro1} alt="Foto 5.2" id="random-aleykaro-img" class="photo-fade-right photo-glow parallax-element absolute right-0 md:right-16 top-1/2 -translate-y-1/2 w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-11 image5-2 stackImg" />
 					<AstroImage src={aleYpau} alt="Foto 5.3" class="photo-fade-right photo-glow parallax-element absolute right-0 md:right-16 top-1/2 -translate-y-1/2 w-80 h-80 object-cover rounded-2xl shadow-2xl opacity-0 scale-90 z-12 image5-3 stackImg" />
 				</div>
                 <div class="mr-[22rem] md:mr-[28rem] max-w-xl text-right parallax-element text-content flex flex-col justify-center min-h-[20rem]">
@@ -198,4 +203,49 @@ const randomAleYkaroImage = aleYkaroImages[Math.floor(Math.random() * aleYkaroIm
 			</section>
 		</main>
 	</div>
+
+	<!-- Script para selección aleatoria de imágenes -->
+	<script is:inline define:vars={{ amigasImages, aleYkaroImages }}>
+		// Console log para debug
+		console.log('🎯 Iniciando selección aleatoria de imágenes');
+		console.log('📸 Imágenes amigas disponibles:', amigasImages);
+		console.log('📸 Imágenes aleYkaro disponibles:', aleYkaroImages);
+
+		document.addEventListener('DOMContentLoaded', function() {
+			console.log('🚀 DOM cargado, aplicando imágenes aleatorias');
+
+			// Selección aleatoria para amigas
+			const amigasKeys = Object.keys(amigasImages);
+			const randomAmigasKey = amigasKeys[Math.floor(Math.random() * amigasKeys.length)];
+			const randomAmigasImage = amigasImages[randomAmigasKey];
+			
+			// Selección aleatoria para aleYkaro
+			const aleYkaroKeys = Object.keys(aleYkaroImages);
+			const randomAleYkaroKey = aleYkaroKeys[Math.floor(Math.random() * aleYkaroKeys.length)];
+			const randomAleYkaroImage = aleYkaroImages[randomAleYkaroKey];
+
+			console.log('🎲 Imagen amigas seleccionada:', randomAmigasKey, randomAmigasImage);
+			console.log('🎲 Imagen aleYkaro seleccionada:', randomAleYkaroKey, randomAleYkaroImage);
+
+			// Aplicar las imágenes seleccionadas
+			const amigasImg = document.getElementById('random-amigas-img');
+			const aleYkaroImg = document.getElementById('random-aleykaro-img');
+
+			if (amigasImg) {
+				amigasImg.src = randomAmigasImage;
+				console.log('✅ Imagen amigas aplicada correctamente');
+			} else {
+				console.log('❌ No se encontró elemento #random-amigas-img');
+			}
+
+			if (aleYkaroImg) {
+				aleYkaroImg.src = randomAleYkaroImage;
+				console.log('✅ Imagen aleYkaro aplicada correctamente');
+			} else {
+				console.log('❌ No se encontró elemento #random-aleykaro-img');
+			}
+
+			console.log('🎉 Selección aleatoria completada');
+		});
+	</script>
 </Layout>
