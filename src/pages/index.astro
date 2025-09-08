@@ -206,14 +206,7 @@ const aleYkaroImages = {
 
 	<!-- Script para selección aleatoria de imágenes -->
 	<script is:inline define:vars={{ amigasImages, aleYkaroImages }}>
-		// Console log para debug
-		console.log('🎯 Iniciando selección aleatoria de imágenes');
-		console.log('📸 Imágenes amigas disponibles:', amigasImages);
-		console.log('📸 Imágenes aleYkaro disponibles:', aleYkaroImages);
-
 		document.addEventListener('DOMContentLoaded', function() {
-			console.log('🚀 DOM cargado, aplicando imágenes aleatorias');
-
 			// Selección aleatoria para amigas
 			const amigasKeys = Object.keys(amigasImages);
 			const randomAmigasKey = amigasKeys[Math.floor(Math.random() * amigasKeys.length)];
@@ -223,9 +216,6 @@ const aleYkaroImages = {
 			const aleYkaroKeys = Object.keys(aleYkaroImages);
 			const randomAleYkaroKey = aleYkaroKeys[Math.floor(Math.random() * aleYkaroKeys.length)];
 			const randomAleYkaroImage = aleYkaroImages[randomAleYkaroKey];
-
-			console.log('🎲 Imagen amigas seleccionada:', randomAmigasKey, randomAmigasImage);
-			console.log('🎲 Imagen aleYkaro seleccionada:', randomAleYkaroKey, randomAleYkaroImage);
 
 			// Aplicar las imágenes seleccionadas
 			const amigasImg = document.getElementById('random-amigas-img');
